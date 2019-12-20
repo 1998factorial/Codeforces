@@ -1,0 +1,18 @@
+A easy
+B greedy , smallest lexicographically order can be achieved by choosing the
+smallest i such that there exists j , (s[j] , j) is minimal among all i > j.
+C x will not go over 10 ^ 6 , so we stop concatenation string after length > 10 ^ 6
+D greedy , observe that solution can only be in [0 , 4] , and the rest is just case work
+E greedy , consider the maximal and minimal individually, consider for each edge , the number of
+times that it's weight will contribute to the min/max. consider the number of nodes on either sides and
+case work.
+F tree DP , it make sense to consider dp[v][k] = "the maximal number of wining region if we split the subtree
+rooted at v into k parts" , however it is not easy to merge this state with v's child, as we need to keep track of
+the vote advantages at v's child x. So, greedy observation: first , we maximise number of winning regions,
+then we maximise the advantage.
+so our DP state will be (maximal number of winning region , maximal advantage)
+When merging, x with y, y either join the part where x is in or does not join.
+Note : time complexity of O(sum [ size(j)^2 - sum[size(j)^2] where j is i's child ] where 1 <= i <= N) = O(N * N)
+why ? Since we are on a tree , there will be exactly N - 1 of j that appear in -size(j) ^ 2
+but for each size(j) ^ 2 , it will appear at most one time (at most 1 parent)
+so N - 1 of size(j) ^ 2 cancel out with size(i) ^ 2 hence it is bounded by O(N * N)
