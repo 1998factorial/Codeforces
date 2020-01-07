@@ -1,5 +1,4 @@
-#include <iostream>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 const int inf = 1e9 + 10;
@@ -28,11 +27,13 @@ void solve(int l , int r , int x , int y , int k){
 }
 
 int main(){
-  cin >> N >> K;
+  scanf("%d %d" , &N , &K);
   for(int i = 1; i <= N; ++i){
     sum[i][0] = 0;
     for(int j = 1; j <= N; ++j){
-      cin >> g[i][j];
+      getchar();
+      char a; a = getchar();
+      g[i][j] = a - '0';
       sum[i][j] = sum[i][j - 1] + g[i][j];
     }
   }
@@ -48,5 +49,5 @@ int main(){
   for(int j = 2; j <= K; ++j){ // O(K * N * logN) = 800 * 4000 * 11 = OK
     solve(1 , N , 1 , N + 1 , j);
   }
-  cout << dp[N][K] << endl;
+  printf("%d\n" , dp[N][K]);
 }

@@ -122,14 +122,11 @@ int main(){
   show(0 , cnt - 1 , 1);
   sort(P , P + N);
   ll ret = 0 , s = 1e9 + 10 , e = 1e9 + 10;
-  map<int , ll> mp;
   for(int i = 0; i < N;){
     int x = P[i].x , y = P[i].y;
     ll v = P[i].w;
     state ans = query(x , cnt - 1 , 0 , cnt - 1 , 1);
     ans.val += c[x];
-    printf(" (%d %d) -> %lld\n" , x , x , ans.val);
-    mp[x] = max(mp[x] , ans.val);
     if(ans.val > ret){
       ret = ans.val;
       s = c[x];
@@ -141,7 +138,5 @@ int main(){
     }
     i = j;
   }
-  cout << ret << endl;
   cout << s << " " << s << " " << e << " " << e << endl;
-  for(auto& it : mp)cout << it.first << " " << it.second << endl;
 }
