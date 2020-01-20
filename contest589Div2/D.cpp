@@ -60,7 +60,6 @@ int main(){
     return 0;
   }
   for(int i = 1; i <= N; ++i){
-    //printf("com[%d] = %d\n" , i , comp[i]);
     cout << comp[i] << " ";
   }
   cout << endl;
