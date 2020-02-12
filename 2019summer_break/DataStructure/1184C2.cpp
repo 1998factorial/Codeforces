@@ -63,7 +63,6 @@ int main(){
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
   cin >> N >> R;
-  //R *= 2;
   vector<int> a;
   for(int i = 0; i < N; ++i){
     int x , y; cin >> x >> y;

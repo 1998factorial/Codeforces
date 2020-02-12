@@ -5,6 +5,10 @@ using namespace std;
 typedef long long ll;
 typedef pair<ll , ll> ii;
 /*
+  method:
+  1. greedy observation (it is always good to maximise the advantage of the region where x is in)
+  2. dp with tuples
+
   dp[x][i] = (maximal number of winning region exclueding the part where x is in ,
   maximal advantage of the part where x is in)
   greedy observation + cool complexity analyze
