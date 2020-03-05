@@ -5,21 +5,28 @@
 using namespace std;
 typedef long long ll;
 typedef pair<int , int> ii;
+
 /*
-  data compression on IQ and X-co
-  have N trees (each for different IQ)
-  each tree is a dynamic tree, val[l , r] = number of reachable robots in range
+  Greedy observation: if a robot with radius x can cover another robot with radius x + 1
+  then obviously vice versa.
+  we can use dynamic range tree to get range tree for each different IQ
+  the memory amortized to NlogN
+
+
+  when query, we say, for iq - K to iq + K trees, how many robots i can cover
+  with range [x[i] - r[i] , x[i] + r[i]].
+  and when updating, we add 1 at x[i] at tree[iq]
 */
+
 const int maxn = 1e5 + 10;
-struct event{
-  int pos , iq , type , id; // type = 0 , query , type = 1 , add , type = 2 , delete
-  event(){}
-  event(int a , int b , int c , int d) : pos(a) , iq(b) , type(c) , id(d){}
-  bool operator < (const event rhs) const {
-    if(pos == rhs.pos)return type > rhs.type;
-    return pos < rhs.pos;
+struct robot{
+  int x , r , iq;
+  robot(){}
+  robot(int a , int b , int c) : x(a) , r(b) , iq(c) {}
+  bool operator < (const robot rhs) const {
+    return r > rhs.r;
   }
-} events[maxn * 3];
+}R[maxn];
 
 struct dynamictree{
   // template for dynamictree
@@ -74,66 +81,33 @@ struct dynamictree{
 
 } tree;
 
-
-
-
-
-
-int X[maxn] , IQ[maxn] , R[maxn];
 int N , K , tot;
-unordered_map<int , int> mp , imp;
-unordered_set<int> versions[maxn];
+unordered_map<int , int> mp;
 
 int main(){
   scanf("%d %d" , &N , &K);
   vector<int> tmp;
   for(int i = 1; i <= N; ++i){
-    scanf("%d %d %d" , &X[i] , &R[i] , &IQ[i]);
-    events[i] = event(max(X[i] - R[i] , 0) , IQ[i] , 1 , i);
-    events[i + N] = event(X[i] , IQ[i] , 0 , i);
-    events[i + N * 2] = event(min(X[i] + R[i] + 1 , 1000000000) , IQ[i] , 2 , i);
-    tmp.push_back(IQ[i]);
+    scanf("%d %d %d" , &R[i].x , &R[i].r , &R[i].iq);
+    tmp.push_back(R[i].iq);
   }
-  sort(events + 1 , events + 1 + 3 * N);
+  sort(R + 1 , R + 1 + N);
   sort(tmp.begin() , tmp.end());
   tot = 1;
   for(int i : tmp){
-    if(mp[i] == 0){
-      mp[i] = tot; imp[tot] = i; ++tot;
-    }
-  }
-
-  for(int i : tmp){
-    for(int j = -K; j <= K; ++j){
-      if(mp[i + j]){
-        versions[mp[i]].insert(mp[i + j]);
-      }
+    if(!mp[i]){
+      mp[i] = tot; ++tot;
     }
   }
   ll ret = 0;
-  for(int i = 1; i <= 3 * N; ++i){
-    int iq = mp[events[i].iq];
-    //DEBUG(events[i].pos);DEBUG(events[i].type);DEBUG(events[i].id);
-    if(events[i].type == 0){
-      // query
-      for(int j : versions[iq]){
-        ret += tree.query(max(0 , X[events[i].id] - R[events[i].id]) , X[events[i].id] , j);
-        //cout << "at version = " << j << " " << 0 << " to " << events[i].pos << " = " << tree.query(0 , events[i].pos , j) << endl;
-        //if(j == iq)--ret;
+  for(int i = 1; i <= N; ++i){
+    int q = R[i].iq;
+    for(int k = -K; k <= K; ++k){
+      if(mp[q + k]){
+        ret += tree.query(max(R[i].x - R[i].r , 0) , min(R[i].x + R[i].r , 1000000000) , mp[q + k]);
       }
     }
-    if(events[i].type == 1){
-      // add
-      tree.update(X[events[i].id] , 1 , iq);
-
-      //cout << "adding +1 at" << X[events[i].id] << endl;
-    }
-    if(events[i].type == 2){
-      // delete
-      tree.update(X[events[i].id] , -1 , iq);
-      //cout << "adding -1 at" << X[events[i].id] << endl;
-    }
-    //DEBUG(ret);
+    tree.update(R[i].x , 1 , mp[q]);
   }
-  printf("%lld\n" , ret - N);
+  printf("%lld\n" , ret);
 }

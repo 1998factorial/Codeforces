@@ -11,6 +11,13 @@ int pre[maxn];
 int tree[maxn << 1];
 int ans[maxn];
 
+/*
+  S[l..r] = a[l]^a[l+1]...^a[r] = xor of numbers that appear odd times
+  we want xor of numbers that appear even times
+  so ans[l..r] = S[l..r]^dis[l..r]
+  where dis[l..r] are the xor of the distinct numbers in a[l..r]
+*/
+
 struct query{
   int l , r , id;
   query(){}

@@ -46,7 +46,7 @@ ll solve(){
     for(int j = 0; j <= i; ++j){
       for(int k = 0; k <= L; ++k){
         for(int x = 0; x <= 2; ++x){
-          printf("dp[%d][%d][%d][%d] = %lld\n" , i , j , k , x , dp[i][j][k][x]);
+          if(dp[i][j][k][x])printf("dp[%d][%d][%d][%d] = %lld\n" , i , j , k , x , dp[i][j][k][x]);
         }
       }
     }

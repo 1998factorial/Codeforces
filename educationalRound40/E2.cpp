@@ -1,47 +1,49 @@
+#pragma GCC optimize(3)
+#pragma GCC optimize(2)
 #include <bits/stdc++.h>
+#define DEBUG(x) std::cerr << #x << '=' << x << std::endl
 using namespace std;
+typedef long long ll;
+typedef pair<int , int> ii;
 
 const int maxn = 2e5 + 10;
-const double ep = 1e-6;
-
-struct tap{
-  double a , t;
-  tap(){}
-  tap(double x , double y) : a(x) , t(y) {}
-  bool operator < (const tap& rhs) const {
-    return t < rhs.t;
-  }
-}s[maxn];
-
 int N;
 double T;
+double a[maxn] , t[maxn];
 
 double solve(){
-  double l = 0 , r = 0 , ret = 0;
-  for(int i = 1; i <= N; ++i)r += s[i].a;
-  for(int i = 1; i <= 50; ++i){ //100 times of binary search on amount of water
-    double mid = (l + r) / 2;
-    double t1 = 0 , t2 = 0 , total = mid , t = mid * T;
-    for(int j = 1; j <= N && total > 0; ++j){
-      double take = s[j].a;
-      take = min(take , total);
-      t1 += s[j].t * take;
-      total -= take;
+  double Sp = 0 , Sn = 0 , ret = 0;
+  vector<int> id;
+  for(int i = 1; i <= N; ++i){
+    id.push_back(i);
+    if(t[i] > T){
+      Sp += a[i] * (t[i] - T);
     }
-    total = mid;
-    for(int j = N; j >= 1 && total > 0; --j){
-      double take = s[j].a;
-      take = min(take , total);
-      t2 += s[j].t * take;
-      total -= take;
+    if(t[i] < T){
+      Sn += a[i] * (T - t[i]);
     }
-    if(t - t1 > -ep && t - t2 < ep){
-      ret = mid;
-      l = mid;
+  }
+  double goal = min(Sp , Sn);
+  Sp = Sn = goal;
+  sort(id.begin() , id.end() , [&](int x , int y){
+    return abs(t[x] - T) < abs(t[y] - T);
+  });
+  for(int i : id){ // for positive group
+    if(t[i] > T){
+      double take = min(a[i] , Sp / (t[i] - T));
+      Sp -= take * (t[i] - T);
+      ret += take;
     }
-    else{
-      r = mid;
+  }
+  for(int i : id){ // for negative group
+    if(t[i] < T){
+      double take = min(a[i] , Sn / (T - t[i])); // the maximal allowed x[i] for (T - t[i])
+      Sn -= take * (T - t[i]); 
+      ret += take;
     }
+  }
+  for(int i : id){
+    if(t[i] == T)ret += a[i];
   }
   return ret;
 }
@@ -49,11 +51,10 @@ double solve(){
 int main(){
   scanf("%d %lf" , &N , &T);
   for(int i = 1; i <= N; ++i){
-    scanf("%lf" , &s[i].a);
+    scanf("%lf" , &a[i]);
   }
   for(int i = 1; i <= N; ++i){
-    scanf("%lf" , &s[i].t);
+    scanf("%lf" , &t[i]);
   }
-  sort(s + 1 , s + 1 + N);
   printf("%lf\n" , solve());
 }

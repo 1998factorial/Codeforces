@@ -7,9 +7,11 @@ typedef long long ll;
 typedef pair<int , int> ii;
 
 int main(){
-  vector<int> a = {1 , 2 , 3 , 5 , 6};
-  auto it = lower_bound(a.begin() , a.end() , 7);
-  int n = it - a.begin();
-  cout << n << endl;
-  cout << *it << endl;
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  srand(time(NULL));
+  int N = 2e5;
+  cout << N << endl;
+  for(int i = 1; i <= N; ++i)cout << rand() << " ";
+  cout << endl;
 }

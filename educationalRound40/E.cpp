@@ -4,8 +4,6 @@ using namespace std;
 /*
   I had no idea about how to do this problem at first :(
   later I bow to the solution
-
-
 */
 
 const int maxn = 2e5 + 10;
