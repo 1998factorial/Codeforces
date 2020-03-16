@@ -44,6 +44,7 @@ bool check(double ratio){
     if(deg1[i] == 0)continue;
     if(ban[i] == 0){
       deg3[i] = deg2[i];
+
       g2[i] = g[i];
     }
   }
