@@ -1,13 +1,15 @@
-#include <iostream>
-#include <time.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main(){
   srand(time(NULL));
-  int N = rand() % 100000 + 10 , X = rand() % 30 - 15;
-  cout << N << " " << X << endl;
+  int N = 500;
+  cout << N << endl;
   for(int i = 1; i <= N; ++i){
-    cout << rand() % 10000 - 5 << " ";
+    int l = rand() % 1000000000 + 1;
+    int r = rand() % 1000000000 + 1;
+    if(l > r)swap(l , r);
+    cout << l << " " << r << endl;
   }
   cout << endl;
 }

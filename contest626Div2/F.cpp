@@ -43,7 +43,7 @@ int main(){
     }
   }
   ll ans = 0;
-  for(int i = 1; i <= N + M; ++i){
+  for(int i = 1; i <= N + M + 1; ++i){
     ans = max(ans , dp[i][0]);
   }
   printf("%lld\n" , ans);

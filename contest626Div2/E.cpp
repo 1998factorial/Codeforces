@@ -10,7 +10,6 @@ typedef pair<int , int> ii;
   group the numbers in right part by their set if neighbouring
   1.intuition, if 2 nodes on right has the same set of adjcent nodes
   then we can replace these 2 nodes by 1 node with value = sum of them
-  
 */
 
 const int maxn = 5e5 + 10;
