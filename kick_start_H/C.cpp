@@ -9,6 +9,12 @@ bool vis[100][100][2010];
 int sum;
 int zero = 1005;
 
+/*
+  if cnt[i] > 10
+  X[i] * i - (cnt[i] - X[i]) * i mod 11 will fall in [0 , 10]
+  therefore, it suffices to just store cnt[i] as 10 or 11 depending on cnt[i]'s parity
+*/
+
 bool solve(int pos , int np , int ng , int sum){
   if(pos <= 0){
     return (sum - zero) % 11 == 0;
@@ -32,7 +38,14 @@ int main(){
   cin >> T;
   for(int t = 1; t <= T; ++t){
     sum = 0;
-    for(int i = 1; i <= 9; ++i)cin >> cnt[i] , sum += cnt[i];
+    for(int i = 1; i <= 9; ++i){
+      cin >> cnt[i];
+      if(cnt[i] > 10){
+        if(cnt[i] % 2) cnt[i] = 11;
+        else cnt[i] = 10;
+      }
+      sum += cnt[i];
+    }
     cout << "Case #" << t << ": ";
     memset(dp , false , sizeof(dp));
     memset(vis , false , sizeof(vis));
