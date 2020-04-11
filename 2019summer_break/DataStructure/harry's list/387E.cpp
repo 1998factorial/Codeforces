@@ -111,6 +111,7 @@ int getright(int pos){ // return maximal x such that a[pos..x] >= a[pos]
 }
 
 int main(){
+  height[0] = maxn + 10;
   scanf("%d %d" , &N , &K);
   for(int i = 1; i <= N; ++i){
     scanf("%d" , &p[i]);
