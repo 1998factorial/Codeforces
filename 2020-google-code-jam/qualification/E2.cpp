@@ -138,6 +138,9 @@ void go(int num){
   }
 }
 
+
+
+
 void solve(){
   if(K < N || K > N * N || K == N + 1 || K == N * N - 1 || (N == 3 && K == 5) || (N == 3 && K == 7)){
     NO();

@@ -65,11 +65,13 @@ void solve(){
   while(change){
     change = 0;
     ans += sum;
+    //cout << "sum = " << sum << endl;
     set<ii> era2 = era;
     era = {};
     for(auto& e : era2){
       change = 1;
       int i = e.first , j = e.second;
+      //printf("removing %d %d\n" , i , j );
       sum -= s[i][j];
       if(~u[i][j]){
         d[u[i][j]][j] = d[i][j];
@@ -87,6 +89,7 @@ void solve(){
         l[i][r[i][j]] = l[i][j];
         check(i , r[i][j]);
       }
+      era.erase(make_pair(i , j));
     }
   }
   cout << ans << endl;
