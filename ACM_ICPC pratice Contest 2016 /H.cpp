@@ -45,7 +45,7 @@ void DFS(int v , int p , int h){
             ++tot;
         }
     }
-    tout[v] = tot;
+    tout[v] = tot - 1;
 }
 
 void build(){
@@ -53,6 +53,7 @@ void build(){
         logs[i] = logs[i / 2] + 1;
     }
     height[0] = inf;
+    //memset(DP , inf , sizeof(DP));
     for(int j = 1; j <= logs[tot] + 1; ++j){
         for(int i = 1; i <= tot; ++i){
             int len = (1 << (j - 1));
@@ -69,8 +70,8 @@ void build(){
 int LCA(int x , int y){
     int l = min(tin[x] , tin[y]);
     int r = max(tout[x] , tout[y]);
-    int len = r - l;
-    return better(DP[l][logs[len]] , DP[r - (1 << logs[len])][logs[len]]);
+    int len = r - l + 1;
+    return better(DP[l][logs[len]] , DP[r - (1 << logs[len]) + 1][logs[len]]);
 }
 
 int solve(){
@@ -85,14 +86,14 @@ int solve(){
         nleaf += (ask(tout[i]) - ask(tin[i])) == 0;
     }
     int root = 0;
-    for(int i = 0; i < a.size(); ++i){
+    for(int i = 0; i < (int)a.size(); ++i){
         if(height[a[i]] < height[a[root]]){
             root = i;
         }
     }
     rotate(a.begin() + root , a.begin() + root + 1, a.end());
     int other_lca = a[0];
-    for(int i = 0; i < a.size() - 1; ++i){
+    for(int i = 0; i < (int)a.size() - 1; ++i){
         other_lca = LCA(other_lca , a[i]);
     }
     int lca = LCA(a.back() , other_lca);
