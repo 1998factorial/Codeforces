@@ -1,3 +1,8 @@
+/*
+    Constructive
+    length will not excceed 3
+    then case work
+*/
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;

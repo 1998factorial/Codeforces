@@ -36,5 +36,5 @@ int main(){
         }
     }
     ll ret = DP[N][0][0] + DP[N][0][1];
-    cout << (ret - 1 + mod)% mod << endl;
+    cout << (ret - 1 + mod) % mod << endl;
 }
