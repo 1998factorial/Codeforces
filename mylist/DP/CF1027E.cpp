@@ -1,5 +1,5 @@
 /*
-    Dynamic programming , counting
+    Dynamic programming , counting , rating 2200
     Observation: once we fix the first row, the remaining rows are either the same as first row or the opposite
     To deal with the constraint that no rectangle of same color cells has area greater than or equal to K.
     Using the observation above, we can first, calculate the number of ways of having the maximal number of

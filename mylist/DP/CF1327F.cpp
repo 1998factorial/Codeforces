@@ -1,5 +1,5 @@
 /*
-    Dynamic programming
+    Dynamic programming , rating 2400
     we can consider the each bit seperately.
     for each bit , DP[i][j] = # of ways that for the first i bits, where the largest index of putting 0 is j
     DP[i][j] = DP[i - 1][j] if i > j

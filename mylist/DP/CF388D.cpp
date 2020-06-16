@@ -1,5 +1,5 @@
 /*
-    Dynamic programming [digit DP] , linear bases
+    Dynamic programming [digit DP] , linear bases , rating 2700
 
     Each perfect set correspond to a unique linear base. (We can check this by doing Gaussian elimination) So, counting the number of perfect set that contains
     no integer greater than K is the same as counting the linear bases where the maximal xor combinations is no

@@ -1,0 +1,100 @@
+ Codeforces 235C Cyclical Quest
+ [DONE] Codeforces 235E Number Challenge [DP]
+ Codeforces 238D Tape Programming
+ Codeforces 238E Meeting Her
+ [DONE] Codeforces 240E Road Repairs [zhu liu algorithm]
+ [TODO] Codeforces 240F Torcoder
+ Codeforces 241B Friends
+ Codeforces 241D Numbers
+ Codeforces 241E Flights
+ Codeforces 241F Race
+ Codeforces 243C Colorado Potato Beetle
+ Codeforces 243D Cubes
+ Codeforces 243E Matrix
+ Codeforces 248E Piglet’s Birthday
+ Codeforces 249D Donkey and Stars
+ Codeforces 249E Endless Matrix
+ Codeforces 251D Two Sets
+ Codeforces 251E Tree and table
+ Codeforces 253E Printer
+ Codeforces 254D Rats
+ Codeforces 256D Liars and Serge
+ Codeforces 257E Greedy Elevator
+ Codeforces 258D Little Elephant and Broken Sorting
+ Codeforces 260E Dividing Kingdom
+ Codeforces 261D Maxim and Increasing Subsequence
+ Codeforces 261E Maxim and Calculator
+ Codeforces 263E Rhombus
+ Codeforces 264D Colorful Stones
+ Codeforces 266D BerDonalds
+ Codeforces 266E More Queries to Array...
+ Codeforces 268D Wall Bars
+ Codeforces 269D Maximum Waterfall
+ Codeforces 269E String Theory
+ Codeforces 273D Dima and Figure
+ Codeforces 273E Dima and Game
+ Codeforces 274C The Last Hole!
+ Codeforces 274E Mirror Room
+ Codeforces 277D Google Code Jam
+ Codeforces 283E Cow Tennis Tournament
+ Codeforces 285E Positions in Permutations
+ [DONE] Codeforces 286D Tourists [sweeping]
+ Codeforces 288E Polo the Penguin and Lucky Numbers
+ Codeforces 293B Distinct Paths
+ Codeforces 293D Ksusha and Square
+ Codeforces 293E Close Vertices
+ Codeforces 294D Shaass and Painter Robot
+ Codeforces 295D Greg and Caves
+ Codeforces 297E Mystic Carvings
+ Codeforces 301C Yaroslav and Algorithm
+ Codeforces 301E Yaroslav and Arrangements
+ Codeforces 303D Rotatable Number
+ [TODO] Codeforces 303E Random Ranking
+ Codeforces 305D Olya and Graph
+ Codeforces 305E Playing with String
+ Codeforces 306C White, Black and White Again
+ Codeforces 306D Polygon
+ Codeforces 309B Context Advertising
+ Codeforces 309D Tennis Rackets
+ Codeforces 309E Sheep
+ Codeforces 311E Biologist
+ Codeforces 314E Sereja and Squares
+ Codeforces 316D3 PE lesson
+ Codeforces 316E3 Summer Homework
+ Codeforces 316G3 Good Substrings
+ Codeforces 317C Balance
+ Codeforces 317E Princess and Her Shadow
+ Codeforces 319D Have You Ever Heard About the Word?
+ Codeforces 319E Ping-Pong
+ Codeforces 321D Ciel and Flipboard
+ Codeforces 323B Tournament-graph
+ Codeforces 323C Two permutations
+ Codeforces 325C Monsters and Diamonds
+ Codeforces 325D Reclamation
+ Codeforces 329D The Evil Temple and the Moving Rocks
+ Codeforces 329E Evil
+ Codeforces 331C3 The Great Julya Calendar
+ Codeforces 331E2 Deja Vu
+ Codeforces 332D Theft of Blueprints
+ Codeforces 332E Binary Key
+ Codeforces 333C Lucky Tickets
+ Codeforces 335D Rectangles and Square
+ Codeforces 335F Buy One, Get One Free
+ Codeforces 338D GCD Table
+ Codeforces 338E Optimize!
+ Codeforces 339E Three Swaps
+ Codeforces 342D Xenia and Dominoes
+ Codeforces 348E Pilgrims
+ Codeforces 351D Jeff and Removing Periods
+ Codeforces 354D Transferring Pyramid
+ Codeforces 356E Xenia and String Problem
+ Codeforces 360D Levko and Sets
+ Codeforces 360E Levko and Game
+ USACO Mar 08 Land Acquisition
+ USACO Nov 08 Toys
+ USACO Dec 08 Fence
+ USACO Open 08 Cow Neighborhoods
+ USACO Open 09 Tower of Hay
+ USACO Dec 12 First!
+ GCJ 2012 Final D Twirling Towards Freedom
+ GCJ 2013 Final C X Marks the Spot

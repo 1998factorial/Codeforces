@@ -1,5 +1,5 @@
 /*
-    Dynamic programming
+    Dynamic programming , rating 2500
     Digit DP, if a number divides all it's digit then it divides their LCM
     observe that LCM(1...9) = 2520 , and number of all possible LCMs is no more than 50
     DP[i][j][k] = # of prefixs (from most significant digit) of length i , where it modules 2520 = j ,

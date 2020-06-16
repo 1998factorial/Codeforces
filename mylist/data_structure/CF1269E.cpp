@@ -1,7 +1,7 @@
 /*
-    Fenwick tree, greedy
+    Fenwick tree, greedy, rating 2300
     we can first count the inversion pairs, then we can find the middle point of all integers from 1 ... i
-    and try to shrink them towards to the middle point, this can be calculated quite easily (not easy opps) 
+    and try to shrink them towards to the middle point, this can be calculated quite easily (not easy opps)
 */
 #include <bits/stdc++.h>
 using namespace std;

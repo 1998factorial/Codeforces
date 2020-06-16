@@ -1,5 +1,5 @@
 /*
-    Dynamic programming
+    Dynamic programming , rating 2200
 
     prefix, consider adding an element in front of the whole array
     cnt[i][j] = # of ways to make array of i +1 and j -1 such that their maximal prefix sum is <= 0

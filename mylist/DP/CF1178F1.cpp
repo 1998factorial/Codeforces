@@ -1,5 +1,5 @@
 /*
-    Dynamic programming (interval)
+    Dynamic programming (interval) , rating 2200
     DP[l][r] = # of ways to color a[l..r] such that all operations are either completly in side [l..r] or
     outside of [l..r].
     the first color we need to put in [l,r] is the smallest color in [l,r], say it is at position x

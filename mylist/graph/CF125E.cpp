@@ -1,5 +1,5 @@
 /*
-    Kruskal , special technique [玄学]
+    Kruskal , special technique [玄学] , rating 2400
 
     this technique exists, thats all I know so far ....
     each edges incident to 1 will be assigned with an additional weight "mid"
