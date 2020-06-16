@@ -1,5 +1,5 @@
 /*
-    Graph, Euler cycle
+    Graph, Euler cycle , 2200
     if all vertices have even degree, then the answer is just the euler cycle
     key: the number of odd degree vertices must be even (because the sum of the degree is even (each edge is counted twice))
     So, if we gather all odd degree vertices and link them to a super node "N + 1" then all degrees will be even and

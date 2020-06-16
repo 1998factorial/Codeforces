@@ -12,8 +12,6 @@ const int maxn = 1e5 + 10;
 
 int b[maxn] , c[maxn] , N , tot;
 
-
-
 struct Indexer{
     unordered_map<int , int> mp;
     vector<int> num;
