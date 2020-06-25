@@ -19,6 +19,7 @@
     which is just DP[i][x][y] * (N / (2 ^ x * 3 ^ y) - N / (2 ^ (x - 1) * 3 ^ y))
     and another transition is similar
 */
+
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;

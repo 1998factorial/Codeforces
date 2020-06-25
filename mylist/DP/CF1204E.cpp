@@ -8,8 +8,6 @@
 
     let DP[i][j] = our answer when we have i +1 and j -1
     DP[0][i] = 0 , DP[i][0] = i , DP[i][j] = (DP[i - 1][j] + C(i + j - 1 , j)) + (DP[i][j - 1] - (C(i + j - 1 , i) - cnt[i][j - 1]))
-
-    answer = DP[N][M]
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -19,6 +17,7 @@ typedef long long ll;
 const ll mod = 998244853;
 int N , M;
 int cnt[4005][4005] , DP[4005][4005] , C[4005][4005];
+
 
 int main(){
     cin >> N >> M;

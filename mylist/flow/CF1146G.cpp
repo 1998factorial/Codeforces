@@ -2,12 +2,12 @@
     Flow (can also be solved by DP) , rating 2700
 */
 #include <bits/stdc++.h>
+using namespace std;
 typedef long long ll;
 
-const int maxn = 1500;
+const int maxn = 5000;
 const double INF = 1e12;
 const double ep = 1e-8;
-int N , M;
 
 struct Edge {
   int from, to;
@@ -104,11 +104,30 @@ struct Dinic {
 int N , M , H;
 int L[55] , R[55] , X[55] , C[55];
 
+int id(int i , int j){
+    return (H + 1) * (i - 1) + j;
+}
 
 int main(){
     cin >> N >> H >> M;
+    Dinic G;
+    G.init(N * (H + 1) + M + 2);
+    int s = 0 , t = N * (H + 1) + M + 1;
+    for(int i = 1; i <= N; ++i){
+        G.add(s , id(i , 0) , INF);
+        for(int j = 0; j < H; ++j){
+            G.add(id(i , j) , id(i , j + 1) , H * H - j * j);
+        }
+    }
     for(int i = 1; i <= M; ++i){
         cin >> L[i] >> R[i] >> X[i] >> C[i];
+        int to = N * (H + 1) + i;
+        for(int x = L[i]; x <= R[i]; ++x){
+            if(X[i] < H){
+                G.add(id(x , X[i] + 1) , to , INF);
+            }
+        }
+        G.add(to , t , C[i]);
     }
-    
+    cout << H * H * N - G.maxFlow(s , t) << endl;
 }
