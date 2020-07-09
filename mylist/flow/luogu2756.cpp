@@ -80,6 +80,7 @@ struct Dinic {
     return flow;
   }
 
+
   void show(){
     for(auto& e : edges){
       printf("(%d -> %d) => cap = %f , flow = %f\n" , e.from , e.to , e.cap , e.flow);
