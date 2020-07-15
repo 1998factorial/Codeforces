@@ -47,7 +47,6 @@ struct max_lazy_tree{
     void build(int l , int r , int id){
         if(l > r)return;
         if(l == r){
-            //tree[id].val = F2[l];
             if(ID)printf("tree[%d %d] = %lld\n" , l , r , tree[id].val);
         }
         else{
