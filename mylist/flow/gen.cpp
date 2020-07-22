@@ -3,10 +3,10 @@ using namespace std;
 
 const int m = 1e9;
 int main(){
-    int N = 500;
     srand(time(NULL));
-    cout << N << endl;
-    for(int i = 1; i <= N; ++i){
-        cout << rand() % m + 1 << " " << rand() % m + 1 << " " << rand() % m + 1 << endl;
+    int N1 = 10 , N2 = 10 , M = 2000;
+    cout << N1 << " " << N2 << " " << M << endl;
+    for(int i = 1; i <= M; ++i){
+        cout << i % 10 + 1 << " " << rand() % N2 + 1 << endl;
     }
 }
