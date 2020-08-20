@@ -1,14 +1,9 @@
 #include <bits/stdc++.h>
-#define x first
-#define y second
-#define ID if(0)
+#define ID if(1)
 using namespace std;
-typedef pair<int , int> ii;
-const int maxn = 4e5 + 20;
+
+const int maxn = 125005;
 const double PI = acos(-1.0);
-int N , X , Y , Q , base;
-int a[maxn / 2];
-int ans[1000005];
 
 struct fast_fourier{
     struct Complex{
@@ -68,8 +63,8 @@ struct fast_fourier{
         // init length of C
         while(len < 2 * N || len < 2 * M) len <<= 1;
         L = len;
-        ID printf("L = %d\n" , L);
         // init polynomial A and B   
+        for(int i = 0; i < L; ++i)A[i] = B[i] = Complex(0 , 0);
         for(int i = 0; i < N; ++i){
             if(a[i]){
                 A[i] = Complex(1 , 0);
@@ -80,55 +75,68 @@ struct fast_fourier{
                 B[i] = Complex(1 , 0);
             }
         }
+        // DO FFT on A and B
         FFT(A , len , 1);
         FFT(B , len , 1);
+        // Convolute A and B to C
         for(int i = 0; i < len; ++i){
             C[i] = A[i] * B[i];
         }
         FFT(C , len , -1);
+        // take the inverse of C
+        // DONE
     }
-
-    void get_C(set<int>& ret){
-        for(int i = 0; i < L; ++i){
-            if((int)(C[i].x + 0.5) > 0 && i - 2 * base > 0){
-                ret.insert(2 * (i - 2 * base + Y));
-            }
-        }
-    }
-
 } DO_FFT;
 
-int aa[maxn * 4] , bb[maxn * 4];
+char S[maxn] , T[maxn];
+int pa[6][maxn] , pb[6][maxn];
+int neq[maxn * 4][6][6];
+int fa[6];
+int N , M;
+
+inline int find(int x){
+    return fa[x] == x ? x : fa[x] = find(fa[x]);
+}
+
+void merge(int x , int y){
+    x = find(x); y = find(y); fa[x] = y;
+}
 
 int main(){
-    scanf("%d %d %d" , &N , &X , &Y);
-    for(int i = 0; i <= N; ++i){
-        scanf("%d" , &a[i]);
+    scanf("%s" , S);
+    scanf("%s" , T);
+    N = strlen(S);
+    M = strlen(T);
+    reverse(T , T + M);
+    for(int j = 0; j < N; ++j){
+        pa[S[j] - 'a'][j] = 1;
     }
-    DO_FFT.init(a[N] * 2 + 1 , a[N] * 2 + 1);
-    base = a[N];
-    for(int i = 0; i <= N; ++i){
-        ++aa[base + a[i]];
+    for(int j = 0; j < M; ++j){
+        pb[T[j] - 'a'][j] = 1;
     }
-    for(int i = 0; i <= N; ++i){
-        ++bb[base - a[i]];
-    }
-    DO_FFT.multiply(aa , bb);
-    set<int> C;
-    DO_FFT.get_C(C);
-    memset(ans , -1 , sizeof(ans));
-    for(int i = 2; i <= 1000000; ++i){ // O(NlogN)
-        if(C.find(i) != C.end()){
-            for(int j = i; j <= 1000000; j += i){
-                ans[j] = max(ans[j] , i);
+    DO_FFT.init(N , M);
+    for(int i = 0; i < 6; ++i){
+        for(int j = 0; j < 6; ++j){
+            if(i != j){
+                DO_FFT.multiply(pa[i] , pb[j]);
+                for(int k = 0; k < DO_FFT.L; ++k){
+                    neq[k][i][j] = (int)(DO_FFT.C[k].x + 0.5);
+                }
             }
         }
     }
-    scanf("%d" , &Q);
-    while(Q--){
-        int l; 
-        scanf("%d" , &l);
-        printf("%d " , ans[l]);
+    for(int k = M - 1; k <= N - 1; ++k){
+        int ans = 0;
+        for(int i = 0; i < 6; ++i)fa[i] = i;
+        for(int i = 0; i < 6; ++i){
+            for(int j = 0; j < 6; ++j){
+                if(neq[k][i][j]){
+                    if(find(i) != find(j)){
+                        merge(i , j); ++ans;
+                    }
+                }
+            }
+        }
+        printf("%d " , ans);
     }
-    printf("\n");
-}   
+}
