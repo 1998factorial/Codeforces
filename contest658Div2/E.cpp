@@ -1,53 +1,76 @@
 #include <bits/stdc++.h>
-#define ID 1
+#define ID if(1)
 using namespace std;
-typedef pair<int , int> ii;
 
-int N , X , Y;
-int b[100005];
-int a[100005];
+const int maxn = 1e5 + 10;
+int N , t , X , Y;
+vector<int> col[maxn] , freq[maxn];
+int b[maxn] , a[maxn];
 
 int main(){
-    int t; scanf("%d" , &t);
+    scanf("%d" , &t);
     while(t--){
-        vector<ii> ps;
-        map<int , int> cnt;
         scanf("%d %d %d" , &N , &X , &Y);
+        for(int i = 0; i <= N + 1; ++i){
+            a[i] = 0;
+            col[i].clear();
+            freq[i].clear();
+        }
         for(int i = 1; i <= N; ++i){
             scanf("%d" , &b[i]);
+            col[b[i]].push_back(i);
         }
-        int unseen = 0;
-        for(int i = 1; i <= N; ++i){
-            ++cnt[b[i]];
-        }
-        for(auto& e : cnt){
-            ps.emplace_back(e.second , e.first);
-        }
-        sort(ps.begin() , ps.end());
-        reverse(ps.begin() , ps.end());
         for(int i = 1; i <= N + 1; ++i){
-            if(cnt[i] == 0){
-                unseen = i;
-                break;
+            freq[col[i].size()].push_back(i);
+        }
+        int f = N + 1;
+        // fix X matches first, use the most frequent color
+        for(int k = 1; k <= X; ++k){
+            while(freq[f].empty())--f;
+            int c = freq[f].back();
+            int id = col[c].back();
+            a[id] = c;
+            col[c].pop_back();
+            freq[f].pop_back();
+            freq[f - 1].push_back(c);
+        }
+        while(freq[f].empty())--f;
+        if(N - Y < 2 * f - (N - X)){
+            printf("NO\n");
+            continue;
+        }
+        // # forced match <= N -  Y
+        vector<int> pos;
+        vector<bool> ok(N - X);
+        for(int i = 1; i <= f; ++i){
+            for(int j : freq[i]){
+                for(int k : col[j]){
+                    pos.push_back(k);
+                }
             }
         }
-        int nfill = X;
-        map<int , int> need;
-        for(auto& e : ps){
-            int color = e.second;
-            int num = e.first;
-            int canput = (nfill >= num) ? num : nfill;
-            need[color] = canput;
-            if(canput == 0)break;
-            e.first -= canput;
-            nfill -= canput;
+        int nunmatch = N - Y;
+        for(int i = 0; i < N - X; ++i){
+            // shift everything by (N - X) / 2
+            a[pos[i]] = b[pos[(i + (N - X) / 2) % (N - X)]]; 
+            if(a[pos[i]] == b[pos[i]]){
+                // a forced match, we need to replace this with color st
+                // freq[color] = 0
+                ok[i] = 1;
+                --nunmatch;
+                a[pos[i]] = freq[0][0];
+            }
         }
-        if(ID)for(auto& e : need){
-            cout << e.first << " " << e.second << endl;
+        for(int i = 0; i < N - X && nunmatch > 0; ++i){
+            if(ok[i])continue;
+            a[pos[i]] = freq[0][0];
+            ok[i] = 1;
+            --nunmatch;
         }
-        int nderange = Y - X;
-        for(int i = ps.size(); i >= 0; --i){
-            
+        printf("YES\n");
+        for(int i = 1; i <= N; ++i){
+            printf("%d " , a[i]);
         }
+        printf("\n");
     }
 }

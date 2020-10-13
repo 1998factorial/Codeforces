@@ -56,10 +56,10 @@ int main(){
     for(i = 1; i <= N; ++i){
         int max_lcs = 0;
         for(j = i - 1; j >= 0; --j){
-            max_lcs = max(max_lcs , LCS[i][j] + 1);
+            max_lcs = max(max_lcs , LCS[i][j]);
         }
         for(j = max_lcs; j <= i; ++j){
-            ret = add(ret , DP[i - j + 1][i]);
+            ret = add(ret , DP[i - j][i]);
         }
         printf("%d\n" , ret);
     }
