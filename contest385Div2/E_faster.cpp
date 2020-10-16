@@ -22,31 +22,25 @@ int main(){
     for(i = 0; i < (1 << N); ++i){
         for(j = 0; j < N * N; ++j){
             if(DP[i][j] == -1)continue;
-            printf("DP[%d][%d] = %d\n" , i , j , DP[i][j]);
+            //printf("DP[%d][%d] = %d\n" , i , j ,DP[i][j]);
             int nr = 0 , nb = 0;
             for(k = 0; k < N; ++k){
                 if(i & (1 << k)){
-                    nr += c[i];
-                    nb += 1 - c[i];
+                    nr += c[k];
+                    nb += 1 - c[k];
                 }
             }
             for(k = 0; k < N; ++k){
                 if(i & (1 << k))continue;
                 int ni = i | (1 << k);
-                if(c[k]){
-                    DP[ni][j + nr] = max(DP[ni][j + nr] , DP[i][j]);
-                }
-                else{
-                    cout << ni << " " << j << endl;
-                    DP[ni][j] = max(DP[ni][j] , DP[i][j] + nb);
-                }
+                int sr = min(nr , r[k]) , sb = min(nb , b[k]);
+                DP[ni][j + sr] = max(DP[ni][j + sr] , DP[i][j] + sb);
             }
         }
     }
     int ret = INF;
     for(i = 0; i < N * N; ++i){
         if(~DP[(1 << N) - 1][i]){
-            printf("DP[%d][%d] = %d\n" , (1 << N) - 1 , i , DP[(1 << N) - 1][i]);
             ret = min(ret , N + max(s1 - i , s2 - DP[(1 << N) - 1][i]));
         }
     }
