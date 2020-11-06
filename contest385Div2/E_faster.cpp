@@ -22,7 +22,6 @@ int main(){
     for(i = 0; i < (1 << N); ++i){
         for(j = 0; j < N * N; ++j){
             if(DP[i][j] == -1)continue;
-            //printf("DP[%d][%d] = %d\n" , i , j ,DP[i][j]);
             int nr = 0 , nb = 0;
             for(k = 0; k < N; ++k){
                 if(i & (1 << k)){
