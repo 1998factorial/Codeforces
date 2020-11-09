@@ -2,11 +2,12 @@
 using namespace std;
 
 int main(){
-    int N = 1000 , K = 2;
-    cout << N << " " << K << endl;
-    for(int v = 100 , i = 1; i <= N; ++i){
-        cout << v << " ";
-        v += 100; 
+    srand(time(NULL));
+    int N = 5000;
+    for(int i = 1; i <= N; ++i){
+        //if(rand() & 1)cout << 1;
+        //else cout << 0;
+        cout << 1;
     }
     cout << endl;
 }
