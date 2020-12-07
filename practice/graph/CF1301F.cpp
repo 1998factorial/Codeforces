@@ -30,7 +30,7 @@ int main(){
         }
     }
     vector<vector<vector<int>>> dis(K + 1 , vector<vector<int>>(N + 1 , vector<int>(M + 1 , INF)));
-    //dis[k][r][c] = minimal cost from (r , c) to get to a 
+    //dis[k][r][c] = minimal cost from (r , c) to get to some vertex that have colour k
     //put all cells whose colour = k into source
     //run BFS to find shortest path
     for(int k = 1; k <= K; ++k){

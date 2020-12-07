@@ -59,11 +59,11 @@ int main(){
                     val[mask] *= ps[i][j];
                 }
             }
-            can[mask] = nmul[val[mask]];
+            can[mask] = 0;//nmul[val[mask]];
         }
         for(int mask = 0; mask < 1 << sz; ++mask){
             for(int nmask = 0; nmask < 1 << sz; ++nmask){
-                if((mask & nmask) == mask && mask != nmask){
+                if((mask & nmask) == mask){
                     can[mask] += (__builtin_popcount(mask) % 2 == __builtin_popcount(nmask) % 2 ? 1 : -1) * nmul[val[nmask]];
                 }
             }
