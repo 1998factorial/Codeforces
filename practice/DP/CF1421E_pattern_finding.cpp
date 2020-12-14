@@ -40,7 +40,7 @@ int main(){
                 if(mask >> i & 1)a += '-';
                 else a += '+';
             }
-            //cout << a << endl;
+            cout << a << endl;
             v[__builtin_popcount(mask)].push_back(a);
             nneg.insert(__builtin_popcount(mask) % 3);
             //cout << "number of -1 = " << __builtin_popcount(mask) << endl;

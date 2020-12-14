@@ -10,6 +10,11 @@ ll sum[3005][3005] , DP[3005];
 
 // Key: in the optimal solution, there is at most one array that is taken partially
 // all other arrays are taken completely
+// partial : 
+// a[x][1] .. a[x][i]
+// a[y][1] .. a[y][j]
+// let a[x][i] >= a[y][j]
+// a[x][i + 1] - a[y][j] >= a[x][i] - a[y][j] >= 0
 
 int main(){
     scanf("%d %d" , &N , &K);
