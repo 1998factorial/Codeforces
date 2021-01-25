@@ -4,6 +4,6 @@
 # As the team coming first is also from UNSW, we could not go to world final
 # Since I have graduated from UNSW, this is perhaps my last regional contest
 # 2 years experiences of CP have taught me a lot and brought me a lot of joy
-# I also got ot know other great people who participate in CP
+# I also got to know other great people who participates in CP
 # Without doubt, CP has made my University life much much more fruitful and interesting
 
