@@ -1,10 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main(){
-    int N = 1e5 , K = 1e3;
-    printf("%d %d\n" , N , K);
+    srand(time(NULL));
+    int N = 2e5 , M = 2e4 , K = 10;
+    printf("%d %d %d" , N , M , K);
     for(int i = 1; i <= N; ++i){
-        printf("%d " , i);
+        int v = rand() % K;
+        printf("%c" , 'a' + v);
     }
-    printf("\n");
+    for(int i = 1; i <= M; ++i){
+        if(i & 1){
+            int v = rand() % 10;
+            printf("1 %d %d b\n" , 500 , 500 + v);
+        }   
+        else{
+            printf("2 abcdefghij\n");
+        }
+    }
 }
